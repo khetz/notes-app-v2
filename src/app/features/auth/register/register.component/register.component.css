@@ -1,0 +1,21 @@
+.container {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    gap: 10px;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.validation-message {
+    color: red;
+}

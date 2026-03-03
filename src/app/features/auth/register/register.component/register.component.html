@@ -1,17 +1,23 @@
 <div class="container">
-    <form [formGroup]="registrationForm">
-        <label for="username">Username: </label>
-        <input id="username" type="text" formControlName="username" />
+    <form [formGroup]="registrationForm" class="registration-form">
+        <div class="form-section">
+            <label for="username">Username: </label>
+            <input id="username" type="text" formControlName="username" />
+        </div>
 
-        <label for="password">Password: </label>
-        <input id="password" type="password" formControlName="password" />
+        <div class="form-section">
+            <label for="password">Password: </label>
+            <input id="password" type="password" formControlName="password" />
+        </div>
 
-        <label for="confirm-password">Confirm Password: </label>
-        <input id="confirm-password" type="password" formControlName="confirmPassword" />
+        <div class="form-section">
+            <label for="confirm-password">Confirm Password: </label>
+            <input id="confirm-password" type="password" formControlName="confirmPassword" />
+        </div>
 
-        @if (registrationForm.hasError('passwordMismatch') 
+        @if (registrationForm.hasError('passwordMismatch')
         && (registrationForm.touched || registrationForm.dirty)) {
-            <p>Passwords do not match</p>
+        <p class="validation-message">Passwords do not match</p>
         }
 
         <button type="submit" [disabled]="!registrationForm.valid">Register</button>
