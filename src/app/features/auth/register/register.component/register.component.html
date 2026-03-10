@@ -1,5 +1,5 @@
 <div class="container">
-    <form [formGroup]="registrationForm" class="registration-form">
+    <form [formGroup]="registrationForm" class="registration-form" (ngSubmit)="submitRegistration()">
         <div class="form-section">
             <label for="username">Username: </label>
             <input id="username" type="text" formControlName="username" />
