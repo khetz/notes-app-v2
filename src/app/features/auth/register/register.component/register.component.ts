@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
       password: [''],
       confirmPassword: ['']
     },
-    {validators: equalPasswordFieldsValidator})
+    {validators: [equalPasswordFieldsValidator], updateOn:'blur'})
   }
 
   submitRegistration() {
