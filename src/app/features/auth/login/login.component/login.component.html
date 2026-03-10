@@ -1,1 +1,15 @@
-<p>login.component works!</p>
+<div class="container">
+    <form [formGroup]="loginForm" class="login-form" (ngSubmit)="submitLoginForm()">
+        <div class="form-section">
+            <label for="username">Username: </label>
+            <input id="username" type="text" formControlName="username" />
+        </div>
+
+        <div class="form-section">
+            <label for="password">Password: </label>
+            <input id="password" type="password" formControlName="password" />
+        </div>
+
+        <button class="login-button" type="submit" [disabled]="!loginForm.valid">Login</button>
+    </form>
+</div>
