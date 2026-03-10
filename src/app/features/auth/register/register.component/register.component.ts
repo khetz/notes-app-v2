@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { equalPasswordFieldsValidator } from '../../../../shared/custom-validators';
 import { AuthService } from '../../../../core/services/auth.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register.component',
@@ -16,6 +17,7 @@ export class RegisterComponent implements OnInit {
   registrationForm!: FormGroup;
   authService = inject(AuthService);
   destroyRef = inject(DestroyRef);
+  routerService = inject(Router);
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
@@ -35,7 +37,7 @@ export class RegisterComponent implements OnInit {
     takeUntilDestroyed(this.destroyRef))
     .subscribe({
       next: () => {
-        
+        this.routerService.navigateByUrl('/login')
       }
     })
   }
