@@ -9,7 +9,7 @@ export class AuthService {
   authUrl = environment.apiUrl + 'auth/'
   http = inject(HttpClient);
 
-  registerUser(filledRegistrationForm: Registration) {
+  registerUser(filledRegistrationForm: Auth) {
     return this.http.post(`${this.authUrl}register`, filledRegistrationForm)
   }
 }

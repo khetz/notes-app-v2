@@ -1,4 +1,4 @@
-interface Registration {
+interface Auth {
     username: string;
     password: string;
 }
