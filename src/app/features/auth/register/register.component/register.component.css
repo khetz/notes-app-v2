@@ -19,6 +19,7 @@
 
 .validation-message {
     color: red;
+    margin: 0;
 }
 
 .register-button {
