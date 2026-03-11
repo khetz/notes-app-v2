@@ -10,6 +10,10 @@ export class AuthService {
   http = inject(HttpClient);
 
   registerUser(filledRegistrationForm: Auth) {
-    return this.http.post(`${this.authUrl}register`, filledRegistrationForm)
+    return this.http.post(`${this.authUrl}register`, filledRegistrationForm);
+  }
+
+  login(filledLoginForm: Auth) {
+    return this.http.post(`${this.authUrl}login`, filledLoginForm);
   }
 }
