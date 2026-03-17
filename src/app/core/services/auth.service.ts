@@ -19,7 +19,7 @@ export class AuthService {
   }
 
   setAccessToken(token: string) {
-   this.accessToken = token; 
+    this.accessToken = token;
   }
 
   clearToken() {
@@ -27,6 +27,10 @@ export class AuthService {
   }
 
   login(filledLoginForm: Auth) {
-    return this.http.post(`${this.authUrl}login`, filledLoginForm);
+    return this.http.post<AccessTokenResponse>(`${this.authUrl}login`, filledLoginForm, { withCredentials: true });
+  }
+
+  refreshToken() {
+    return this.http.post<AccessTokenResponse>(`${this.authUrl}refresh`, {}, { withCredentials: true });
   }
 }
