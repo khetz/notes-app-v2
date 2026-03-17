@@ -17,18 +17,19 @@ export class LoginComponent implements OnInit {
   private destroyRef = inject(DestroyRef);
   private routerService = inject(Router);
 
-    ngOnInit() {
-      this.loginForm = this.formBuilder.group({
-        username: [''],
-        password: ['']
-      })
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      username: [''],
+      password: ['']
+    })
   }
 
   submitLoginForm() {
     this.authService.login(this.loginForm.value)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: () => {
+        next: (res) => {
+          this.authService.setAccessToken(res.accessToken)
           this.routerService.navigateByUrl('/home')
         }
       })
