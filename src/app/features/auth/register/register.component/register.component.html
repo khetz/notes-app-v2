@@ -1,18 +1,19 @@
 <div class="container">
     <form [formGroup]="registrationForm" class="registration-form" (ngSubmit)="submitRegistration()">
         <div class="form-section">
-            <label for="username">Username: </label>
-            <input id="username" type="text" formControlName="username" />
+            <label for="register-username">Username: </label>
+            <input id="register-username" type="text" formControlName="registerUsername" />
         </div>
 
         <div class="form-section">
-            <label for="password">Password: </label>
-            <input id="password" type="password" formControlName="password" />
+            <label for="register-password">Password: </label>
+            <input id="register-password" type="password" formControlName="registerPassword" />
         </div>
 
         <div class="form-section">
-            <label for="confirm-password">Confirm Password: </label>
-            <input id="confirm-password" type="password" formControlName="confirmPassword" />
+            <label for="register-confirm-password">Confirm Password: </label>
+            <input id="register-confirm-password" autocomplete="registerConfirmPassword" type="password"
+                formControlName="registerConfirmPassword" />
         </div>
 
         @if (registrationForm.hasError('passwordMismatch')

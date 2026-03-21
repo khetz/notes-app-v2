@@ -21,9 +21,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registrationForm = this.formBuilder.group({
-      username: [''],
-      password: [''],
-      confirmPassword: ['']
+      registerUsername: [''],
+      registerPassword: [''],
+      registerConfirmPassword: ['']
     },
     {validators: [equalPasswordFieldsValidator], updateOn:'blur'})
   }
