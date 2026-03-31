@@ -25,7 +25,16 @@ export class LoginComponent implements OnInit {
   }
 
   submitLoginForm() {
-    this.authService.login(this.loginForm.value)
+    const loginFormData = this.loginForm.value;
+
+    if (loginFormData == null) return;
+
+    const loginRequest: Auth = {
+      username: loginFormData.loginUsername,
+      password: loginFormData.loginPassword
+    }
+
+    this.authService.login(loginRequest)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
         next: (res) => {
