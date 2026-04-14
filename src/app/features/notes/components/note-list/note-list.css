@@ -2,3 +2,9 @@ ul {
     list-style-type: none;
     padding: 0px;
 }
+
+.heading {
+    padding: 5px 15px;
+    border-bottom: 1px #e0e0e0 solid;
+    font-weight: 700;
+}

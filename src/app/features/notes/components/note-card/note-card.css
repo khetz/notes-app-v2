@@ -1,9 +1,17 @@
 .container {
     display: flex;
     flex-direction: column;
+    padding: 15px;
+    border-bottom: 1px #e0e0e0 solid;
 }
 
 .note-description {
     display: flex;
     justify-content: space-between;
+}
+
+
+.container:hover {
+    background-color: gray;
+    color: white;
 }
