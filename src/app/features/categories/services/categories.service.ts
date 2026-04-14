@@ -8,7 +8,7 @@ import { Note } from '../../notes/models/note.model';
 @Injectable({
   providedIn: 'root',
 })
-export class CategoriesService {
+export class CategoryService {
   http = inject(HttpClient);
   categoriesUrl = environment.apiUrl + 'categories/';
 
