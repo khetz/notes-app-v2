@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { CategoriesService } from '../../services/categories.service';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { CategoryService } from '../../services/categories.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,11 +9,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-  categoryService = inject(CategoriesService);
+  categoryService = inject(CategoryService);
   selectedCategoryId: number | null = null;
   categories$ = this.categoryService.getCategories();
+  @Output() categorySelected = new EventEmitter<number | null>();
 
   setSelectedCategoryId(categoryId: number | null) {
     this.selectedCategoryId = categoryId;
+    this.categorySelected.emit(this.selectedCategoryId);
   }
 }
