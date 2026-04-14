@@ -12,4 +12,8 @@ export class NoteService {
   getNote(id: number) {
     return this.http.get(`${this.notesUrl}${id}`);
   }
+
+  getAllNotes() {
+    return this.http.get(this.notesUrl);
+  }
 }
