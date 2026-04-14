@@ -8,3 +8,10 @@ ul {
     border-bottom: 1px #e0e0e0 solid;
     font-weight: 700;
 }
+
+.container {
+    height: 100vh;
+     scrollbar-width: none;
+    -ms-overflow-style: none;
+    overflow: auto;
+}

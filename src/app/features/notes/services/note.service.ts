@@ -1,6 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Note } from '../models/note.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +15,7 @@ export class NoteService {
     return this.http.get(`${this.notesUrl}${id}`);
   }
 
-  getAllNotes() {
-    return this.http.get(this.notesUrl);
+  getAllNotes(): Observable<Note[]> {
+    return this.http.get<Note[]>(this.notesUrl);
   }
 }

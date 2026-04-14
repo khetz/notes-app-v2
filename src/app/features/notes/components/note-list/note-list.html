@@ -4,9 +4,9 @@
     </div>
     <div class="note-list-section">
             <ul class="note-list">
-                <li><app-note-card></app-note-card></li>
-                <li><app-note-card></app-note-card></li>
-                <li><app-note-card></app-note-card></li>
+                @for(note of notes; track note.id) {
+                    <li><app-note-card [note]="note"></app-note-card></li>
+                }
             </ul>
     </div>
 </div>

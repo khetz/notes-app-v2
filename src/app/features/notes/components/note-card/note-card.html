@@ -1,9 +1,9 @@
 <div class="container">
     <div class="note-title">
-        <h4>Project Plan Update</h4>
+        <h4>{{note.title}}</h4>
     </div>
     <div class="note-description">
-        <p class="note-text">Review timelines and milestones</p>
-        <p class="note-date">Today</p>
+        <p class="note-text">{{formatNoteContent(note.content)}}</p>
+        <p class="note-date">{{note.lastUpdatedAt}}</p>
     </div>
 </div>
