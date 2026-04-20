@@ -1,17 +1,41 @@
 .container {
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    border-bottom: 1px #e0e0e0 solid;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.note-title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #111827;
+}
+
+.note-date {
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.note-text {
+    font-size: 13px;
+    color: #6b7280;
 }
 
 .note-description {
+    /* margin-top: 4px; */
     display: flex;
     justify-content: space-between;
 }
 
 
 .container:hover {
-    background-color: gray;
-    color: white;
+    background-color: #f3f4f6;
+    color: #111827;
+}
+
+.container:active {
+    background-color: white;
+    border-left: 3px solid #3b82f6;
 }

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Note } from '../../models/note.model';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-note-card',
@@ -12,5 +13,9 @@ export class NoteCard {
 
   formatNoteContent(content: string) {
     return content.substring(0,10) + "...";
+  }
+
+  formatDatetime(datetime: string) { 
+    return format(datetime, 'yyyy-MM-dd HH:mm')
   }
 }

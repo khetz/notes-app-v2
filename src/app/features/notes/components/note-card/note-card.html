@@ -1,9 +1,9 @@
 <div class="container">
     <div class="note-title">
-        <h4>{{note.title}}</h4>
+        <h3>{{note.title}}</h3>
     </div>
     <div class="note-description">
         <p class="note-text">{{formatNoteContent(note.content)}}</p>
-        <p class="note-date">{{note.lastUpdatedAt}}</p>
+        <p class="note-date">{{formatDatetime(note.lastUpdatedAt)}}</p>
     </div>
 </div>
