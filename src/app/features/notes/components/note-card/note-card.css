@@ -24,7 +24,6 @@
 }
 
 .note-description {
-    /* margin-top: 4px; */
     display: flex;
     justify-content: space-between;
 }
