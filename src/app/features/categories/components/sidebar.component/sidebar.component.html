@@ -3,7 +3,7 @@
         <button (click)="setSelectedCategoryId(null)" [class.active]="selectedCategoryId==null">All notes</button>
     </div>
     <div class="categories">
-        <h4>Categories</h4>
+        <div><p>CATEGORIES</p></div>
         <ul class="category-list">
             @for (category of (categories$ | async); track category.id) {
             <li><button (click)="setSelectedCategoryId(category.id)" [class.active]="selectedCategoryId==category.id">
