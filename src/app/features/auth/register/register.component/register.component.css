@@ -12,16 +12,60 @@
     gap: 5px;
 }
 
+label {
+    font-size: 12px;
+    color: #111827;
+    margin-bottom:4px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 250px;
+    gap: 10px;
+}
+
 .form-section {
     display: flex;
     flex-direction: column;
 }
 
+.register-button {
+    margin-top: 10px;
+}
+
+#register-username, #register-password,
+#register-confirm-password {
+    height: 30px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: #e5e7eb 1px solid;
+}
+
+#register-username:focus , #register-password:focus,
+ #register-confirm-password:focus {
+    outline: #3b82f6 1px solid;
+}
+
+#register-username:hover , #register-password:hover,
+#register-confirm-password:hover {
+    border: #2d70db 1px solid;
+}
+
+button {
+    height: 30px;
+    background-color: #3b82f6;
+    border: none;
+    color: white;
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: #2f67c3;
+}
+
 .validation-message {
     color: red;
     margin: 0;
-}
-
-.register-button {
-    margin-top: 20px;
+    font-size: 12px;
 }
