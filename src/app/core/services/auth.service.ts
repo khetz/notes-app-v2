@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +10,8 @@ export class AuthService {
   authUrl = environment.apiUrl + 'auth/'
   http = inject(HttpClient);
   private accessToken: string | null = null;
+  isRefreshing = false;
+  refreshTokenSubject = new BehaviorSubject<string | null>(null);
 
   registerUser(filledRegistrationForm: Auth) {
     return this.http.post(`${this.authUrl}register`, filledRegistrationForm);
