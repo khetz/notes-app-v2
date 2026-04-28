@@ -6,24 +6,26 @@ import { NoteService } from '../../../features/notes/services/note.service';
 import { CategoryService } from '../../../features/categories/services/categories.service';
 import { CommonModule } from '@angular/common';
 import { Note } from '../../../features/notes/models/note.model';
+import { NoteEditor } from "../../../features/notes/components/note-editor/note-editor";
+import { Category } from '../../../features/categories/models/category.model';
 
 @Component({
   selector: 'app-home.component',
-  imports: [SidebarComponent, NoteList, CommonModule],
+  imports: [SidebarComponent, NoteList, CommonModule, NoteEditor],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  selectedCategoryId$ = new BehaviorSubject<number | null>(null);
+  selectedCategory$ = new BehaviorSubject<Category | null>(null);
   noteService = inject(NoteService);
   categoryService = inject(CategoryService)
 
-  notes$ : Observable<Note[]> = this.selectedCategoryId$.pipe(
+  notes$ : Observable<Note[]> = this.selectedCategory$.pipe(
     switchMap(
-      categoryId =>
-        categoryId == null
+      category =>
+        category == null
           ? this.noteService.getAllNotes()
-          : this.categoryService.getNoteByCategory(categoryId)
+          : this.categoryService.getNoteByCategory(category.id)
     )
   )
 }

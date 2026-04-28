@@ -1,9 +1,11 @@
 <div class="container">
     <div class="side-bar">
-        <app-sidebar (categorySelected)="selectedCategoryId$.next($event)"></app-sidebar>
+        <app-sidebar (categorySelected)="selectedCategory$.next($event)"></app-sidebar>
     </div>
     <div class="notes">
-        <app-note-list [notes]="(notes$ | async) ?? []"></app-note-list>
+        <app-note-list [category]="selectedCategory$.value" [notes]="(notes$ | async) ?? []"></app-note-list>
     </div>
-    <div class="note-editor">Three</div>
+    <div class="note-editor">
+        <app-note-editor></app-note-editor>
+    </div>
 </div>

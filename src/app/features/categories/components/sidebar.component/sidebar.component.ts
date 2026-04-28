@@ -1,6 +1,7 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { CategoryService } from '../../services/categories.service';
 import { CommonModule } from '@angular/common';
+import { Category } from '../../models/category.model';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,10 +13,10 @@ export class SidebarComponent {
   categoryService = inject(CategoryService);
   selectedCategoryId: number | null = null;
   categories$ = this.categoryService.getCategories();
-  @Output() categorySelected = new EventEmitter<number | null>();
+  @Output() categorySelected = new EventEmitter<Category | null>();
 
-  setSelectedCategoryId(categoryId: number | null) {
-    this.selectedCategoryId = categoryId;
-    this.categorySelected.emit(this.selectedCategoryId);
+  setSelectedCategory(category: Category | null) {
+    this.selectedCategoryId = category?.id ?? null;
+    this.categorySelected.emit(category);
   }
 }

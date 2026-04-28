@@ -12,5 +12,6 @@
 }
 
 .note-editor {
+    justify-content: center;
     flex: 2 1 0;
 }
