@@ -12,6 +12,11 @@
     color: #111827;
 }
 
+.no-note-selected {
+    align-self: center;
+    justify-self: center;
+}
+
 .note-content {
     font-size: 14px;
     line-height: 1.6;

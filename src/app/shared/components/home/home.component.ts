@@ -17,6 +17,7 @@ import { Category } from '../../../features/categories/models/category.model';
 })
 export class HomeComponent {
   selectedCategory$ = new BehaviorSubject<Category | null>(null);
+  selectedNote$ = new BehaviorSubject<Note | null>(null);
   noteService = inject(NoteService);
   categoryService = inject(CategoryService)
 

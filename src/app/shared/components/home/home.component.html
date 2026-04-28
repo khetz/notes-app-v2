@@ -3,9 +3,10 @@
         <app-sidebar (categorySelected)="selectedCategory$.next($event)"></app-sidebar>
     </div>
     <div class="notes">
-        <app-note-list [category]="selectedCategory$.value" [notes]="(notes$ | async) ?? []"></app-note-list>
+        <app-note-list [category]="selectedCategory$.value" [notes]="(notes$ | async) ?? []"
+        (noteSelected)="selectedNote$.next($event)"></app-note-list>
     </div>
     <div class="note-editor">
-        <app-note-editor></app-note-editor>
+        <app-note-editor [note]="selectedNote$.value"></app-note-editor>
     </div>
 </div>

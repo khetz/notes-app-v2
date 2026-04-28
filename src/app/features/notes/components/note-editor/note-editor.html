@@ -1,5 +1,16 @@
 <div class="container">
-    <input class="title" type="text" placeholder="Untitled note" />
+    @if (!note)
+    {
+        <div class="no-note-selected">
+            Select a note
+        </div>
+    }
+    @else {
+        <input class="title" type="text" placeholder="Untitled note" 
+        [value]="note.title" />
 
-    <textarea type="text" class="note-content" placeholder="Start writing your note..."></textarea>
+        <textarea type="text" class="note-content" placeholder="Start writing your note..."
+        [value]="note.content"></textarea>
+    }
+    
 </div>

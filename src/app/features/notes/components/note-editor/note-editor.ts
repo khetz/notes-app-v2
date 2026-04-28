@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Note } from '../../models/note.model';
 
 @Component({
   selector: 'app-note-editor',
@@ -6,4 +7,6 @@ import { Component } from '@angular/core';
   templateUrl: './note-editor.html',
   styleUrl: './note-editor.css',
 })
-export class NoteEditor {}
+export class NoteEditor {
+  @Input() note: Note | null = null;
+}
