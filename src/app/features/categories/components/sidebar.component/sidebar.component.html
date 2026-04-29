@@ -5,7 +5,7 @@
     <div class="categories">
         <div class="category-title">
             <p>CATEGORIES</p>
-            <button class="add-category">+</button>
+            <button class="add-category" (click)="addCategory()">+</button>
         </div>
         <ul class="category-list">
             @for (category of (categories$ | async); track category.id) {
