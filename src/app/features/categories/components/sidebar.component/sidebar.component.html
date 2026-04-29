@@ -1,12 +1,15 @@
 <div class="container">
     <div class="heading">
-        <button (click)="setSelectedCategory(null)" [class.active]="selectedCategoryId==null">All notes</button>
+        <button class="category" (click)="setSelectedCategory(null)" [class.active]="selectedCategoryId==null">All notes</button>
     </div>
     <div class="categories">
-        <div><p>CATEGORIES</p></div>
+        <div class="category-title">
+            <p>CATEGORIES</p>
+            <button class="add-category">+</button>
+        </div>
         <ul class="category-list">
             @for (category of (categories$ | async); track category.id) {
-            <li><button (click)="setSelectedCategory(category)" [class.active]="selectedCategoryId==category.id">
+            <li><button class="category" (click)="setSelectedCategory(category)" [class.active]="selectedCategoryId==category.id">
                 {{category.name}}
             </button></li>
             }
