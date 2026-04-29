@@ -3,7 +3,7 @@ import { SidebarComponent } from '../../../features/categories/components/sideba
 import { NoteList } from '../../../features/notes/components/note-list/note-list';
 import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import { NoteService } from '../../../features/notes/services/note.service';
-import { CategoryService } from '../../../features/categories/services/categories.service';
+import { CategoryService } from '../../../features/categories/services/category.service';
 import { CommonModule } from '@angular/common';
 import { Note } from '../../../features/notes/models/note.model';
 import { NoteEditor } from "../../../features/notes/components/note-editor/note-editor";
@@ -21,7 +21,7 @@ export class HomeComponent {
   noteService = inject(NoteService);
   categoryService = inject(CategoryService)
 
-  notes$ : Observable<Note[]> = this.selectedCategory$.pipe(
+  notes$: Observable<Note[]> = this.selectedCategory$.pipe(
     switchMap(
       category =>
         category == null

@@ -8,7 +8,7 @@ export class UserInterfaceService {
 
   modalState = signal<ModalState | null>(null);
 
-  setModalState(modalState: ModalState) {
+  setModalState(modalState: ModalState | null) {
     this.modalState.set(modalState);
   }
 }

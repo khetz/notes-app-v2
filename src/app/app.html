@@ -1,1 +1,7 @@
 <router-outlet></router-outlet>
+
+@if (userInterfaceService.modalState() !== null) {
+    <div class="overlay" (click)="closeCategoryModal()">
+        <app-category-modal (click)="$event.stopPropagation()"></app-category-modal>
+    </div>
+}

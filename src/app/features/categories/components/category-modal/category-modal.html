@@ -1,1 +1,13 @@
-<p>category-modal works!</p>
+<div class="container">
+    <h3>{{title()}}</h3>
+    <div class="category-and-buttons">
+        <input type="text" 
+        [value]="categoryName()"
+        (input)="categoryName.set($any($event.target).value)"/>
+        <div class="modal-buttons">
+            <button class="save" (click)="saveCategory()">Save</button>
+            <button class="cancel" (click)="closeModal()">Cancel</button>
+        </div>
+    </div>
+
+</div>

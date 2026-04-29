@@ -1,0 +1,57 @@
+.container {
+    padding: 24px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-radius: 8px;
+}
+
+.category-and-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+}
+
+input {
+    width: 280px;
+    font-size: 36px;
+    border: none;
+    border-bottom: 1px #e5e7eb solid;
+}
+
+input:active, input:focus {
+    outline: none;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: end;
+    gap: 8px;
+}
+
+button {
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.save {
+    background-color: #639bf5;
+    color: white;
+    border: none;
+}
+
+.save:hover {
+    background-color: #3370d3;
+}
+
+.cancel {
+    color: #374151;
+    border: none;
+}
+
+.cancel:hover {
+    color: white;
+    background-color: gray;;
+}

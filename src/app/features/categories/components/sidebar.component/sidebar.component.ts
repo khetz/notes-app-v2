@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
-import { CategoryService } from '../../services/categories.service';
+import { CategoryService } from '../../services/category.service';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../models/category.model';
 import { UserInterfaceService } from '../../../../core/ui-state/user-interface.service';
@@ -11,7 +11,7 @@ import { UserInterfaceService } from '../../../../core/ui-state/user-interface.s
   styleUrl: './sidebar.component.css',
 })
 export class SidebarComponent {
-  
+
   @Output() categorySelected = new EventEmitter<Category | null>();
 
   userInterfaceService = inject(UserInterfaceService);
@@ -26,6 +26,6 @@ export class SidebarComponent {
   }
 
   addCategory() {
-    this.userInterfaceService.setModalState({ type: 'addCategory'});
+    this.userInterfaceService.setModalState({ type: 'addCategory' });
   }
 }
