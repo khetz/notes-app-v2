@@ -3,10 +3,11 @@ import { CategoryService } from '../../services/category.service';
 import { CommonModule } from '@angular/common';
 import { Category } from '../../models/category.model';
 import { UserInterfaceService } from '../../../../core/ui-state/user-interface.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [CommonModule],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
