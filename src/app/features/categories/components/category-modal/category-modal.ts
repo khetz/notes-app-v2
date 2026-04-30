@@ -1,9 +1,7 @@
 import { Component, computed, DestroyRef, effect, inject, signal } from '@angular/core';
 import { UserInterfaceService } from '../../../../core/ui-state/user-interface.service';
-import { CategoryService } from '../../services/category.service';
 import { CreateCategoryRequest } from '../../models/create-category-request.model';
-import { finalize } from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-category-modal',
@@ -46,7 +44,7 @@ export class CategoryModal {
     this.userInterfaceService.setModalState(null);
   }
 
-  saveCategory() {
+  save() {
     const modalState = this.userInterfaceService.modalState();
 
     if (modalState?.type == "addCategory") {
@@ -54,14 +52,12 @@ export class CategoryModal {
         name: this.categoryName()
       }
 
-      this.categoryService.createCategory(request)
-        .pipe(
-          finalize(() => { this.userInterfaceService.setModalState(null) }),
-          takeUntilDestroyed(this.destroyRef)
-        ).subscribe();
+      this.categoryService.createCategory(request);
     }
     else if (modalState?.type == "editCategory") {
       // generate edit request
     }
+
+    this.userInterfaceService.setModalState(null);
   }
 }

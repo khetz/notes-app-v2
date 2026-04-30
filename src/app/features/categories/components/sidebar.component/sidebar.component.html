@@ -8,7 +8,7 @@
             <button class="add-category" (click)="addCategory()">+</button>
         </div>
         <ul class="category-list">
-            @for (category of (categories$ | async); track category.id) {
+            @for (category of categories(); track category.id) {
             <li><button class="category" (click)="setSelectedCategory(category)" [class.active]="selectedCategoryId==category.id">
                 {{category.name}}
             </button></li>
