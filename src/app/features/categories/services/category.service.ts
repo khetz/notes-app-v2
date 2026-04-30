@@ -32,4 +32,13 @@ export class CategoryService {
       this._categories.update(list => [...list, created]);
     });
   }
+
+  editCategory(request: Category) {
+    this.http.put<Category>(`${this.categoriesUrl}${request.id}`, request)
+    .subscribe(updatedCategory => {
+      this._categories.update(
+        list => list.map(c => c.id == updatedCategory.id ? updatedCategory : c)
+      );
+    })
+  }
 }

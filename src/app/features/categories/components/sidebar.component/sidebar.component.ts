@@ -33,4 +33,12 @@ export class SidebarComponent implements OnInit {
   addCategory() {
     this.userInterfaceService.setModalState({ type: 'addCategory' });
   }
+
+  editCategory(category: Category) {
+    this.userInterfaceService.setModalState({ type: 'editCategory', category: category })
+  }
+
+  deleteCategory(category: Category) {
+    this.userInterfaceService.setModalState({ type: 'deleteCategory', category: category })
+  }
 }

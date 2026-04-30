@@ -1,11 +1,17 @@
 <div class="container">
     <h3>{{title()}}</h3>
     <div class="category-and-buttons">
-        <input type="text" 
-        [value]="categoryName()"
-        (input)="categoryName.set($any($event.target).value)"/>
+        @if(userInterfaceService.modalState()?.type !== 'deleteCategory' )
+        {
+        <input type="text" [value]="categoryName()" (input)="categoryName.set($any($event.target).value)" />
+        }
+        @else {
+            <p> Are you sure you want to delete the 
+                <b>{{categoryName()}}</b> catergory?</p>
+        }
+
         <div class="modal-buttons">
-            <button class="save" (click)="save()">Save</button>
+            <button class="save" (click)="save()">{{confirmationText()}}</button>
             <button class="cancel" (click)="closeModal()">Cancel</button>
         </div>
     </div>

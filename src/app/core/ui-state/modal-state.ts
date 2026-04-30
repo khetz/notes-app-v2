@@ -9,4 +9,9 @@ export type EditCategoryModal = {
     category: Category;
 }
 
-export type ModalState = AddCategoryModal | EditCategoryModal;
+export type DeleteCategoryModal = {
+    type: 'deleteCategory';
+    category: Category;
+}
+
+export type ModalState = AddCategoryModal | EditCategoryModal | DeleteCategoryModal;

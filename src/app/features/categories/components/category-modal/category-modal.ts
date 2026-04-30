@@ -2,6 +2,7 @@ import { Component, computed, DestroyRef, effect, inject, signal } from '@angula
 import { UserInterfaceService } from '../../../../core/ui-state/user-interface.service';
 import { CreateCategoryRequest } from '../../models/create-category-request.model';
 import { CategoryService } from '../../services/category.service';
+import { Category } from '../../models/category.model';
 
 @Component({
   selector: 'app-category-modal',
@@ -25,6 +26,21 @@ export class CategoryModal {
         return 'Add Category';
       case 'editCategory':
         return 'Edit Category';
+      case 'deleteCategory':
+        return 'Delete Category';
+    }
+  });
+
+  confirmationText = computed(() => {
+    const modalState = this.userInterfaceService.modalState();
+
+    if (!modalState) return '';
+
+    switch (modalState.type) {
+      case 'deleteCategory':
+        return 'Yes';
+      default:
+        return 'Save'
     }
   });
 
@@ -32,8 +48,9 @@ export class CategoryModal {
     effect(() => {
       const modalState = this.userInterfaceService.modalState();
 
-      if (modalState?.type == "editCategory") {
-         this.categoryName.set(modalState.category.name);
+      if (modalState?.type == "editCategory" || modalState?.type == 'deleteCategory') {
+        this.categoryName.set(modalState.category.name);
+        return;
       }
 
       this.categoryName.set('');
@@ -55,7 +72,12 @@ export class CategoryModal {
       this.categoryService.createCategory(request);
     }
     else if (modalState?.type == "editCategory") {
-      // generate edit request
+      const request: Category = {
+        id: modalState.category.id,
+        name: this.categoryName()
+      }
+
+      this.categoryService.editCategory(request);
     }
 
     this.userInterfaceService.setModalState(null);
