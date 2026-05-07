@@ -18,16 +18,14 @@ export class SidebarComponent implements OnInit {
   userInterfaceService = inject(UserInterfaceService);
 
   categoryService = inject(CategoryService);
-  selectedCategoryId: number | null = null;
   categories = this.categoryService.categories;
 
   ngOnInit(): void {
     this.categoryService.getCategories();
   }
 
-  setSelectedCategory(category: Category | null) {
-    this.selectedCategoryId = category?.id ?? null;
-    this.categorySelected.emit(category);
+  setSelectedCategory(categoryId: number | null) {
+    this.categoryService.selectCategory(categoryId)
   }
 
   addCategory() {

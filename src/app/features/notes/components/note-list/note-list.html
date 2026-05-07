@@ -1,10 +1,10 @@
 <div class="container">
     <div class="heading">
-        <h2>{{category?.name ?? "All notes"}}</h2>
+        <h2>{{categoryService.selectedCategory()?.name ?? "All notes"}}</h2>
     </div>
     <div class="note-list-section">
             <ul class="note-list">
-                @for(note of notes; track note.id) {
+                @for(note of notes(); track note.id) {
                     <li (click)="setSelectedNote(note)"><app-note-card [note]="note"></app-note-card></li>
                 }
             </ul>

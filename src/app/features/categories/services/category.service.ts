@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 import { Note } from '../../notes/models/note.model';
@@ -14,6 +14,21 @@ export class CategoryService {
   categoriesUrl = environment.apiUrl + 'categories/';
   private _categories = signal<Category[]>([]);
   categories = this._categories.asReadonly();
+  private _selectedCategoryId = signal<number | null>(null);
+  selectedCategoryId = this._selectedCategoryId.asReadonly();
+  selectedCategory = computed(() => {
+    let selectedCategoryId = this.selectedCategoryId();
+
+    if (selectedCategoryId == null)
+      return null;
+
+    return this.categories()
+      .find(c => c.id == selectedCategoryId) ?? null;
+  });
+
+  selectCategory(categoryId: number | null) {
+    this._selectedCategoryId.set(categoryId);
+  }
 
   getCategories() {
     this.http.get<Category[]>(this.categoriesUrl)
@@ -39,6 +54,17 @@ export class CategoryService {
       this._categories.update(
         list => list.map(c => c.id == updatedCategory.id ? updatedCategory : c)
       );
+    })
+  }
+
+  deleteCategory(categoryId: number) {
+    this.http.delete(`${this.categoriesUrl}${categoryId}`)
+    .subscribe(() => {
+      this._categories.update(
+        list => list.filter(c => c.id != categoryId))
+
+      if (this.selectedCategoryId() == categoryId)
+        this.selectCategory(null);
     })
   }
 }

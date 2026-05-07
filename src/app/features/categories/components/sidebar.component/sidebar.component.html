@@ -1,6 +1,7 @@
 <div class="container">
     <div class="heading">
-        <button class="category" (click)="setSelectedCategory(null)" [class.active]="selectedCategoryId==null">All
+        <button class="category" (click)="setSelectedCategory(null)"
+            [class.active]="categoryService.selectedCategoryId()==null">All
             notes</button>
     </div>
     <div class="categories">
@@ -10,10 +11,9 @@
         </div>
         <ul class="category-list">
             @for (category of categories(); track category.id) {
-            <li class="category-item" (click)="setSelectedCategory(category)"
-            [class.active]="selectedCategoryId == category.id">
-                <button class="category"
-                    [class.active]="selectedCategoryId==category.id">
+            <li class="category-item" (click)="setSelectedCategory(category.id)"
+                [class.active]="categoryService.selectedCategoryId() == category.id">
+                <button class="category" [class.active]="categoryService.selectedCategoryId() ==category.id">
                     {{category.name}}
                 </button>
 
