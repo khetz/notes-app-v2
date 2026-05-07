@@ -64,20 +64,25 @@ export class CategoryModal {
   save() {
     const modalState = this.userInterfaceService.modalState();
 
-    if (modalState?.type == "addCategory") {
+    if (!modalState) return;
+
+    if (modalState.type == "addCategory") {
       const request: CreateCategoryRequest = {
         name: this.categoryName()
       }
 
       this.categoryService.createCategory(request);
     }
-    else if (modalState?.type == "editCategory") {
+    else if (modalState.type == "editCategory") {
       const request: Category = {
         id: modalState.category.id,
         name: this.categoryName()
       }
 
       this.categoryService.editCategory(request);
+    }
+    else if (modalState.type == "deleteCategory") {
+      this.categoryService.deleteCategory(modalState.category.id);
     }
 
     this.userInterfaceService.setModalState(null);
