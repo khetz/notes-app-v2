@@ -9,6 +9,32 @@ ul {
     color: #111827;
     margin-bottom: 24px;
     border-bottom: 1px #e5e7eb solid;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1rem;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.search-bar button {
+    padding: 6px 10px;
+    border: none;
+    background: #eee;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .container {

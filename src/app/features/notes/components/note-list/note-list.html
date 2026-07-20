@@ -1,6 +1,16 @@
 <div class="container">
     <div class="heading">
         <h2>{{categoryService.selectedCategory()?.name ?? "All notes"}}</h2>
+        <div class="search-bar">
+            <input
+            [value]="searchQuery()"
+            (input)="searchQuery.set($any($event.target).value)"
+            placeholder="Search notes..."
+            />
+            @if (searchQuery()) {
+                <button (click)="clearSearch()">X</button>
+            }
+        </div>
     </div>
     <div class="note-list-section">
             <ul class="note-list">
