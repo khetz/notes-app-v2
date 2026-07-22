@@ -4,4 +4,6 @@ export interface Note {
     content: string;
     createdAt: string;
     lastUpdatedAt: string;
+    summary: string;
+    tags: string[];
 }

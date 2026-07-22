@@ -1,4 +1,4 @@
-import { Component, DestroyRef, inject, input, signal } from '@angular/core';
+import { Component, DestroyRef, inject, input, OnInit, signal } from '@angular/core';
 import { Note } from '../../models/note.model';
 import { format } from 'date-fns';
 import { NoteService } from '../../services/note.service';
@@ -11,7 +11,7 @@ import { finalize } from 'rxjs';
   templateUrl: './note-card.html',
   styleUrl: './note-card.css',
 })
-export class NoteCard {
+export class NoteCard implements OnInit {
   note = input.required<Note>();
   analysing = signal(false);
   summary = signal('');
@@ -19,6 +19,11 @@ export class NoteCard {
 
   private noteService = inject(NoteService);
   private destroyRef = inject(DestroyRef);
+
+  ngOnInit() {
+    this.summary.set(this.note().summary ?? "");
+    this.tags.set(this.note().tags ?? []);
+  }
 
   formatNoteContent(content: string) {
     return content.substring(0, 10) + "...";
