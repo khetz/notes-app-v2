@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="note-list-section">
-            <ul class="note-list">
+            <ul class="note-list">  
                 @for(note of notes(); track note.id) {
                     <li (click)="setSelectedNote(note)"><app-note-card [note]="note"></app-note-card></li>
                 }

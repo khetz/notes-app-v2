@@ -1,59 +1,111 @@
-# NotesApp
+# 📝 Notes App — Angular Client
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+A modern, signal-driven note-taking application built with **Angular 21**. Designed for speed and simplicity, with JWT-based authentication and a clean modular architecture. This project was built to explore signals and as a foundation for AI integration and collaboration (Web sockets etc).
 
-## Development server
+## Tech Stack
 
-To start a local development server, run:
+- **Angular 21** with standalone components
+- **Signals** for reactive state management
+- **JWT** authentication with refresh token rotation
+- **.NET Minimal API** backend (separate repo)
+- **SQL Server** data store
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── core/
+│   │   ├── interceptors/
+│   │   │   ├── auth.interceptor.ts
+│   │   │   ├── token-refresh.interceptor.ts
+│   │   │   
+│   │   ├── services/
+│   │        ├── auth.service.ts
+│   │   └── ui-state/
+│   │        ├── modal-state.ts
+│   │        ├── user-inteface.service.ts
+│   │
+│   ├── features/ 
+|   |   ├── auth/
+|   |       ├── login/
+|   |       ├── register/
+|   |
+│   │   ├── categories/
+│   │       ├── components/
+│   │       ├── models/
+│   │       └── services/    
+│   │   
+│   │   ├── notes/
+│   │       ├── components/
+│   │       ├── models/
+│   │       ├── pages
+│   │       └── services/ 
+│   │
+│   │   └── shared/
+│   │       ├── components/
+│   │       ├── models/
+│   │       └── services/
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20+
+- Angular CLI 21
+
+### Install & Run
 
 ```bash
+# Install dependencies
+npm install
+
+# Start the dev server
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The app runs at `http://localhost:4200` by default.
 
-## Code scaffolding
+### Environment Config
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Set your API base URL in `src/environments/environment.ts`:
 
-```bash
-ng generate component component-name
+```typescript
+export const environment = {
+  production: false,
+  apiUrl: 'https://localhost:7013/api/'
+};
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Authentication Flow
 
-```bash
-ng generate --help
-```
+The app uses JWT access tokens paired with refresh tokens for seamless session management.
 
-## Building
+1. User logs in → receives an access token and a refresh token.
+2. The auth interceptor attaches the access token to every outgoing API request.
+3. On 401 response, the interceptor silently refreshes the token using the stored refresh token.
+4. If the refresh fails, the user is redirected to login.
 
-To build the project run:
+## Key Patterns
 
-```bash
-ng build
-```
+**Signals over RxJS for component state** — Signals drive the reactive layer wherever possible, keeping templates simple and change detection efficient.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+**Core / Features / Shared architecture** — `core` holds app-wide singletons (services, guards, interceptors), `features` contains lazy-loaded routes, and `shared` houses reusable UI building blocks.
 
-## Running unit tests
+**Standalone components** — No NgModules. Every component, directive, and pipe is standalone with explicit imports.
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Roadmap
 
-```bash
-ng test
-```
+- [ ] Rich-text editor with Markdown support
+- [ ] AI-powered search via RAG pipeline (Voyage AI embeddings)
+- [ ] Tags and folder organisation
+- [ ] Offline support with service workers
 
-## Running end-to-end tests
+## Related
 
-For end-to-end (e2e) testing, run:
+- **Backend** — .NET Minimal API with SQL Server ([backend repo](https://github.com/khetz/notes-api))
 
-```bash
-ng e2e
-```
+## License
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT
