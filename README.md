@@ -95,11 +95,15 @@ The app uses JWT access tokens paired with refresh tokens for seamless session m
 
 **Standalone components** — No NgModules. Every component, directive, and pipe is standalone with explicit imports.
 
+## AI Features
+
+- **Semantic search** — AI-powered note retrieval via RAG pipeline (Voyage AI embeddings)
+- **Note summarisation** — Automatic summaries with AI-generated tags for quick browsing
+
 ## Roadmap
 
 - [ ] Rich-text editor with Markdown support
-- [ ] AI-powered search via RAG pipeline (Voyage AI embeddings)
-- [ ] Tags and folder organisation
+- [ ] Folder organisation
 - [ ] Offline support with service workers
 
 ## Related
